@@ -69,13 +69,11 @@ def fail_safe(temperature, neutrons_produced_per_second, threshold):
     3. 'DANGER' -> `temperature * neutrons per second` is not in the above-stated ranges
     """
 
-    percentage = ((temperature * neutrons_produced_per_second) / threshold) * 100
-
-    if percentage < 90:
+    criticality = temperature * neutrons_produced_per_second
+    if criticality < (threshold * 0.9):
         return 'LOW'
-    elif percentage < 10:
+    if (threshold * 0.9) <= criticality <= (threshold * 1.1):
         return 'NORMAL'
-    else:
-        return 'DANGER'
+    return 'DANGER'
 
 print(fail_safe(1000, 30, 5000))

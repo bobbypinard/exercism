@@ -11,16 +11,17 @@ def equilateral(sides):
 def isosceles(sides):
     if not is_triangle(sides):
         return False
-    sorted(sides)
-    if sides[0] == sides[1] or sides[1] == sides[2]:
-        return True
-    else:
+    sides = sorted(sides)
+    if sides[0] + sides[1] <= sides[2]:
         return False
+    else:
+        return sides[0] == sides[1] or sides[1] == sides[2]
 
 
 def scalene(sides):
     if not is_triangle(sides):
         return False
+    sides = sorted(sides)
     if sides[0] != sides[1] != sides[2]:
         return True
     else:
@@ -28,7 +29,7 @@ def scalene(sides):
 
 def is_triangle(sides):
     for side in sides:
-        if side <= 0:
+        if side <= 0 or side >= sum(sides) - side:
             return False
         else:
             return True

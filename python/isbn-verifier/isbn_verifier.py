@@ -3,7 +3,7 @@ def is_valid(isbn):
         return False
     isbn = isbn.replace("-", "")
     check = []
-    if len(isbn) > 10:
+    if len(isbn) > 10 or len(isbn) < 10:
         return False
     for i, char in enumerate(isbn):
         if i == 9 and char in 'Xx':
@@ -18,4 +18,4 @@ def is_valid(isbn):
         return True
     return False
 
-print(is_valid('3-598-2X507-9'))
+print(is_valid('3-598-21507'))

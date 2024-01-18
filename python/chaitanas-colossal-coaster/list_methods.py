@@ -45,7 +45,8 @@ def remove_the_mean_person(queue, person_name):
     :return: list - queue update with the mean persons name removed.
     """
 
-    return queue.pop(person_name)
+    queue.remove(person_name)
+    return queue
 
 
 def how_many_namefellows(queue, person_name):
@@ -66,7 +67,7 @@ def remove_the_last_person(queue):
     :return: str - name that has been removed from the end of the queue.
     """
 
-    pass
+    return queue[-1]
 
 
 def sorted_names(queue):

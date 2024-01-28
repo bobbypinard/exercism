@@ -12,9 +12,11 @@ def add_me_to_the_queue(express_queue, normal_queue, ticket_type, person_name):
     """
 
     if ticket_type == 0:
-        return normal_queue.append(person_name)
+        normal_queue.append(person_name)
+        return normal_queue
     elif ticket_type == 1:
-        return express_queue.append(person_name)
+        express_queue.append(person_name)
+        return express_queue
     else:
         raise ValueError("Ticket type needs to be 1 or 0.")
 
@@ -39,7 +41,8 @@ def add_me_with_my_friends(queue, index, person_name):
     :return: list - queue updated with new name.
     """
 
-    pass
+    queue.insert(index, person_name)
+    return queue
 
 
 def remove_the_mean_person(queue, person_name):
@@ -83,3 +86,5 @@ def sorted_names(queue):
     """
 
     return sorted(queue)
+
+print(add_me_with_my_friends(queue=["Natasha", "Steve", "T'challa", "Wanda", "Rocket"], index=1, person_name="Bucky"))

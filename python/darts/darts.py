@@ -1,13 +1,10 @@
+import math
 def score(x, y):
-    coordinates = sorted([abs(x), abs(y)])
-    
-    if coordinates[1] > 10:
-        return 0
-    elif coordinates[1]  > 5:
-        return 1
-    elif coordinates[1] > 1:
-        return 5
-    else:
+    distance = math.sqrt((x**2) + (y**2))
+    if distance <= 1:
         return 10
-
-print(score(-9, 9))
+    if distance <= 5:
+        return 5
+    if distance <= 10:
+        return 1
+    return 0
